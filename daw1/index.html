@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Alumnos GitHub</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+<body>
+    <div class="container my-4">
+        <h1 class="text-center mb-4"><i class="fa-brands fa-github"></i> Alumnos de Desarrollo de Aplicaciones Web</h1>
+        <div id="tabla-container"></div>
+    </div>
+
+    <script>
+        const alumnos = [
+    { "github_user": "Abeagom", "info": "BG, A" },
+    { "github_user": "AlejandroH91", "info": "HR, A" },
+    { "github_user": "Aletrecedev", "info": "DC, A" },
+    { "github_user": "alecanto26", "info": "CC, A" },
+    { "github_user": "alittlekevs", "info": "FB, K" },
+    { "github_user": "AndresJabegaAlcina", "info": "JA, JA" },
+    { "github_user": "aaagm", "info": "GM, A" },
+    { "github_user": "alvaroooom", "info": "MF, A" },
+    { "github_user": "clarafp8", "info": "FP, C" },
+    { "github_user": "FranciscoGarciaDODI", "info": "GC, F" },
+    { "github_user": "hafdalamehdisidi", "info": "MS, H" },
+    { "github_user": "IsraelNarvaezSaavedra", "info": "NS, I" },
+    { "github_user": "josemiguelzerpagarcia", "info": "ZG, JM" },
+    { "github_user": "joseluisms24", "info": "MS, JL" },
+    { "github_user": "Juanjoo24", "info": "HC, JJ" },
+    { "github_user": "juancarlospizarro", "info": "PA, JC" },
+    { "github_user": "lvelbiz", "info": "VB, L" },
+    { "github_user": "MarcosENDES", "info": "RG, M" },
+    { "github_user": "Monicmilancas", "info": "MC, M" },
+    { "github_user": "pedronoguera04", "info": "NS, P" },
+    { "github_user": "periquito18", "info": "MP, S" },
+    { "github_user": "RaulPerezMarin", "info": "PM, R" },
+    { "github_user": "raulvt02", "info": "VT, R" },
+    { "github_user": "RocioCalero", "info": "CL, RdR" },
+    { "github_user": "Sheila140", "info": "MO, S" },
+    { "github_user": "SergioCamposDelgado", "info": "CD, S" },
+    { "github_user": "Sergiogp7", "info": "GP, S" }
+];
+
+        // Función para cargar el archivo alumnos.json y generar la tabla
+        async function cargarAlumnos() {
+            try {
+     
+
+                let tablaHTML = `
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Usuario de GitHub</th>
+                                <th>Mi-Web-Estatica</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+                let num = 0;
+                // Genera las filas de la tabla
+                alumnos.forEach(alumno => {
+                    const usuario = alumno.github_user;
+                    const info = alumno.info;
+                    const enlaceGitHub = `https://github.com/${usuario}`;
+                    const enlaceMiWebEstatica = `https://${usuario}.github.io/mi-web-estatica`;
+                    num += 1;
+                    tablaHTML += `
+                        <tr>
+                             <td>${num}</td>
+                            <td><a href="${enlaceGitHub}" target="_blank">${usuario}</a></td>
+                            <td><a href="${enlaceMiWebEstatica}" target="_blank">${info}</a></td>
+                        </tr>
+                    `;
+                });
+
+                tablaHTML += `
+                        </tbody>
+                    </table>
+                `;
+
+                // Inserta la tabla en el contenedor
+                document.getElementById('tabla-container').innerHTML = tablaHTML;
+            } catch (error) {
+                console.error("Error al cargar el archivo alumnos.json:", error);
+                document.getElementById('tabla-container').innerHTML = '<p>Error al cargar la tabla de alumnos.</p>';
+            }
+        }
+
+        // Llama a la función al cargar la página
+        cargarAlumnos();
+    </script>
+      
+    
+</body>
+</html>
