@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumnos GitHub</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container my-4">
+        <h1 class="text-center mb-4"><i class="fa-brands fa-github"></i> Alumnos de <mark>Desarrollo de Aplicaciones Web</mark></h1>
+        <input type="text" id="filtro" class="form-control mb-3" placeholder="Filtrar por nombre de usuario de GitHub" onkeyup="filtrarAlumnos()">
+        <div id="tabla-container"></div>
+    </div>
+
+    <script>
+       const alumnos = [
+    { "github_user": "aleaguino", "info": "AN, A"},
+    { "github_user": "Sonicorndb", "info": "BL, D" },
+    { "github_user": "LuBeGar", "info": "BG, L" },
+    { "github_user": "gregoriobs", "info": "BS, G" },
+    { "github_user": "MarcosDS97", "info": "DM, M" },
+    { "github_user": "EscribanoC", "info": "DV, L" },
+    { "github_user": "paulaminguez14", "info": "DR, P" },
+    { "github_user": "MarcosDS97", "info": "DS, M" },
+    { "github_user": "EscribanoC", "info": "EF, C" },
+    { "github_user": "ServandoT", "info": "GC, J" },
+    { "github_user": "agutbar", "info": "GA, C" },
+    { "github_user": "Gramaso", "info": "GC, J" },
+    { "github_user": "PablolQ", "info": "GL, M" },
+    { "github_user": "agutbar", "info": "GB, A" },
+    { "github_user": "Gramaso", "info": "GC, A" },
+    { "github_user": "PabloIQ", "info": "IQ, P" },
+    { "github_user": "PabloIQ", "info": "JB, J" },
+    { "github_user": "Pabloluma", "info": "LM, P" },
+    { "github_user": "emarvaz", "info": "MX, E" },
+    { "github_user": "Raillo1", "info": "RC, R" },
+    { "github_user": "Alejandrovy08", "info": "RS, A" }
+];
+
+   
+        // Función para generar la tabla de alumnos
+        function generarTabla(alumnosFiltrados) {
+            let tablaHTML = `
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Usuario de GitHub</th>
+                            <th>Mi-Web-Estática</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            // Genera las filas de la tabla
+            alumnosFiltrados.forEach((alumno, index) => {
+                const usuario = alumno.github_user;
+                const enlaceGitHub = `https://github.com/${usuario}`;
+                const enlaceMiWebEstatica = `https://${usuario}.github.io/mi-web-estatica`;
+
+                tablaHTML += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td><a href="${enlaceGitHub}" target="_blank">${usuario}</a></td>
+                        <td><a href="${enlaceMiWebEstatica}" target="_blank">${enlaceMiWebEstatica}</a></td>
+                    </tr>
+                `;
+            });
+
+            tablaHTML += `
+                    </tbody>
+                </table>
+            `;
+
+            // Inserta la tabla en el contenedor
+            document.getElementById('tabla-container').innerHTML = tablaHTML;
+        }
+
+        // Función para filtrar la lista de alumnos
+        function filtrarAlumnos() {
+            const filtro = document.getElementById('filtro').value.toLowerCase();
+            const alumnosFiltrados = alumnos.filter(alumno => alumno.github_user.toLowerCase().includes(filtro));
+            generarTabla(alumnosFiltrados);
+        }
+
+        // Genera la tabla inicial con todos los alumnos
+        generarTabla(alumnos);
+    </script>
+</body>
+</html>
