@@ -57,6 +57,7 @@
             // Genera las filas de la tabla
             alumnosFiltrados.forEach((alumno, index) => {
                 const usuario = alumno.github_user;
+                const info = alumno.info;
                 const enlaceGitHub = `https://github.com/${usuario}`;
                 const enlaceMiWebEstatica = `https://${usuario}.github.io/mi-web-estatica`;
 
@@ -64,7 +65,7 @@
                     <tr>
                         <td>${index + 1}</td>
                         <td><a href="${enlaceGitHub}" target="_blank">${usuario}</a></td>
-                        <td><a href="${enlaceMiWebEstatica}" target="_blank">${enlaceMiWebEstatica}</a></td>
+                        <td><a href="${enlaceMiWebEstatica}" target="_blank">${info}</a></td>
                     </tr>
                 `;
             });
