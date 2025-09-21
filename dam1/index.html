@@ -9,35 +9,31 @@
 </head>
 <body>
     <div class="container my-4">
-        <h1 class="text-center mb-4"><i class="fa-brands fa-github"></i> Alumnos de <mark>Desarrollo de Aplicaciones Web</mark></h1>
+        <h1 class="text-center mb-4"><i class="fa-brands fa-github"></i> Alumnos de <mark>Desarrollo de Aplicaciones Multiplataforma</mark></h1>
         <input type="text" id="filtro" class="form-control mb-3" placeholder="Filtrar por nombre de usuario de GitHub" onkeyup="filtrarAlumnos()">
         <div id="tabla-container"></div>
     </div>
 
     <script>
-       const alumnos = [
-    { "github_user": "hidalgogalanantonio-codificador", "info": "HG, A" },
-    { "github_user": "saraniievess", "info": "NI, S" },
-    { "github_user": "dbarfer2609", "info": "BF, D" },
-    { "github_user": "josecqq05", "info": "QQ, J" },
-    { "github_user": "carboalbeldaemilio-rgb", "info": "CA, E" },
-    { "github_user": "daanielalpz", "info": "LL, D" },
-    { "github_user": "dominguezobreroadrian-lang", "info": "DO, A" },
-    { "github_user": "IMCcamas", "info": "MC, I" },
-    { "github_user": "LopeDelgado", "info": "DS, L" },
-    { "github_user": "suareznicolas7", "info": "SP, N" },
-    { "github_user": "carlosruizgarrido", "info": "RG, C" },
-    { "github_user": "Jonathan-Camas", "info": "MV, J" },
-    { "github_user": "ortegaromerodaniel", "info": "OR, D" },
-    { "github_user": "JoaquinVasa", "info": "VS, J" },
-    { "github_user": "ManuelLopez06", "info": "#¡VALOR!" },
-    { "github_user": "gabrivillegas", "info": "VF, G" },
-    { "github_user": "lalonsos", "info": "AS, L" },
-    { "github_user": "", "info": "RR, J" },
-    { "github_user": "programador-123", "info": "PG, M" },
-    { "github_user": "", "info": "GM, J" },
-    { "github_user": "diazjimenezmarcos", "info": "DJ, M" },
+        const alumnos = [
+    { "github_user": "robertofrancobarrios", "info": "FB, R" },
+    { "github_user": "JooseeSS", "info": "SS, J" },
+    { "github_user": "joseca331", "info": "BG, J" },
+    { "github_user": "Adri-marq", "info": "ML, A" },
+    { "github_user": "ivan-alcaide", "info": "AR, I" },
+    { "github_user": "Gabriel23clases", "info": "GL, G" },
+    { "github_user": "albamachuk", "info": "MP, A" },
+    { "github_user": "CobosAdrian-kiwi", "info": "CF, A" },
+    { "github_user": "JuanjoVoutrinas", "info": "TM, P" },
+    { "github_user": "huetecobosmiguel-cloud", "info": "HC, M" },
+    { "github_user": "SHA1456", "info": "HA, S" },
+    { "github_user": "", "info": "LP, G" },
+    { "github_user": "msierraufano", "info": "SU, M" },
+    { "github_user": "", "info": "MB, A" },
+    { "github_user": "Alvaro-Dorado", "info": "DC, A" },
+    { "github_user": "JaviCG2006", "info": "CG, J" },
 ];
+
         // Función para generar la tabla de alumnos
         function generarTabla(alumnosFiltrados) {
             let tablaHTML = `
@@ -47,6 +43,7 @@
                             <th>#</th>
                             <th>Usuario de GitHub</th>
                             <th>Mi-Web-Estática</th>
+                         <!--   <th>GIT_Prueba</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -58,13 +55,15 @@
                 const info = alumno.info;
                 const enlaceGitHub = `https://github.com/${usuario}`;
                 const enlaceMiWebEstatica = `https://${usuario}.github.io/mi-web-estatica`;
-                const enlaceGIT = `https://${usuario}.github.io/git`;
-                const proyectoMetrica = `https://github.com/${usuario}/metrica_proyecto`;
+
+             
                 tablaHTML += `
                     <tr>
                         <td>${index + 1}</td>
                         <td><a href="${enlaceGitHub}" target="_blank">${usuario}</a></td>
                         <td><a href="${enlaceMiWebEstatica}" target="_blank">${info}</a></td>
+                      
+                 
                     </tr>
                 `;
             });
